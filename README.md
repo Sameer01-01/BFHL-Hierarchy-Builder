@@ -1,108 +1,37 @@
-# BFHL Full Stack Application
+# BFHL Advanced Hierarchy Visualizer
 
-A production-ready full-stack application built with Node.js (Express) and Next.js, featuring graph hierarchy construction, cycle detection, and recursive visualization.
+## Overview
+The **BFHL Hierarchy Visualizer** is a high-performance, enterprise-grade solution designed to transform complex, flat relationship data into intuitive, interactive nested hierarchies. Built for precision and scale, it provides a robust engine for graph analysis, ensuring data integrity while delivering a premium visual experience.
 
-## Features
-- **Validation**: Strict `X->Y` format validation with uppercase letter checks.
-- **Duplicate Handling**: Automatically detects and separates duplicate edges.
-- **Hierarchy Construction**: Builds nested JSON trees from flat edge data.
-- **Cycle Detection**: Detects recursive loops and marks them in the UI.
-- **Multi-parent Logic**: Follows strict "first-parent-wins" rule for node connections.
-- **Summary Statistics**: Tracks total trees, total cycles, and identifies the largest tree.
-- **Premium UI**: Dark-themed, responsive dashboard with recursive tree viewers and micro-animations.
+At its core, the application bridges the gap between raw edge definitions (e.g., `A->B`) and deep-tree structures, making it an essential tool for architects, developers, and data analysts who need to map out dependencies or organizational structures.
 
-## Tech Stack
-- **Backend**: Node.js, Express, CORS, Dotenv.
-- **Frontend**: Next.js 14+, TypeScript, Tailwind CSS.
-- **Deployment**: Ready for Vercel (Frontend) and Render/Heroku (Backend).
+> [!NOTE]
+> For a deep dive into the system architecture, API details, and logic flow, see our [Technical Documentation](file:///d:/05%20projects/bajaj_finserv/DOCUMENTATION.md).
 
 ---
 
-## Getting Started
+## Core Capabilities
 
-### Prerequisites
-- Node.js (v18 or higher)
-- npm or yarn
+### 1. Intelligent Data Parsing & Validation
+Our processing engine enforces strict data integrity rules. It automatically filters invalid entries and handles redundant edge definitions to ensure the resulting graph is mathematically sound.
+- **Syntactic Cleaning**: Filters out malformed strings and enforces standardized uppercase node mapping.
+- **Deduplication Engine**: Identifies and separates duplicate relationships to prevent redundant processing.
 
-### 1. Backend Setup
-```bash
-cd backend
-npm install
-npm run dev
-```
-The backend will start at `http://localhost:5000`.
+### 2. Advanced Graph Analysis
+Beyond simple tree building, the system performs deep-path analysis to provide a comprehensive overview of the data structure.
+- **Dynamic Cycle Detection**: Implements component-wide Depth-First Search (DFS) to identify recursive loops, preventing infinite rendering while highlighting structural flaws.
+- **Multi-Parent Resolution**: Enforces a "first-parent-priority" rule to resolve complex many-to-one relationships, maintaining a clean hierarchical flow.
+- **Path Depth Calculation**: Automatically calculates the maximum depth for every hierarchy generated.
 
-### 2. Frontend Setup
-```bash
-cd frontend
-npm install
-npm run dev
-```
-The frontend will start at `http://localhost:3000`.
+### 3. High-Fidelity Visualization
+The frontend is engineered to handle deep nesting with a modern, responsive design.
+- **Recursive Tree Rendering**: Dynamically builds nested UI components that reflect the exact depth of the underlying data.
+- **Interactive Dashboard**: Features a dark-themed, glassmorphic interface with micro-animations and real-time state updates.
+- **Summary Analytics**: Provides instant feedback on total hierarchies found, success ratios, and processing latency.
 
 ---
 
-## API Documentation
+## Technical Philosophy
+The project is built on the principle of **"Separation of Concerns."** The backend acts as a stateless, high-speed processing node, while the frontend focuses on delivering a low-latency, high-performance visualization layer. 
 
-### POST `/bfhl`
-Processes edge data and returns hierarchies.
-
-**Request Body:**
-```json
-{
-  "data": ["A->B", "A->C", "B->D"]
-}
-```
-
-**Response Format:**
-```json
-{
-  "user_id": "yourname_ddmmyyyy",
-  "email_id": "your_email",
-  "college_roll_number": "your_roll",
-  "hierarchies": [...],
-  "invalid_entries": [...],
-  "duplicate_edges": [...],
-  "summary": {
-    "total_trees": 1,
-    "total_cycles": 0,
-    "largest_tree_root": "A"
-  }
-}
-```
-
----
-
-## Sample Test Cases
-
-1. **Simple Tree**: `A->B, A->C, B->D`
-2. **Cycle**: `A->B, B->C, C->A`
-3. **Multi-parent**: `A->C, B->C` (C will stay under A)
-4. **Duplicates**: `A->B, A->B, B->C`
-5. **Invalid**: `A->BC, 1->2, hello`
-
----
-
-## Deployment Instructions
-
-### Backend (Render)
-1. Create a new Web Service on Render.
-2. Connect your GitHub repo.
-3. Set Build Command: `cd backend && npm install`
-4. Set Start Command: `node app.js`
-5. Add Environment Variable: `PORT=10000`
-
-### Frontend (Vercel)
-1. Import your repo to Vercel.
-2. Set Root Directory to `frontend`.
-3. Add Environment Variable: `NEXT_PUBLIC_API_URL=https://your-backend-url.onrender.com`
-4. Deploy!
-
----
-
-## Logic Explanation
-1. **Validation**: Uses regex/split to ensure `X->Y` format and single uppercase letters.
-2. **Graph Building**: Uses an adjacency list. The multi-parent rule is enforced during edge processing by checking if a node already has a parent recorded in a Map.
-3. **Connected Components**: Uses BFS/DFS on an undirected version of the graph to find isolated groups of nodes.
-4. **Cycle Detection**: Uses a standard DFS with a recursion stack to identify cycles within each component.
-5. **Tree Building**: A recursive function converts the adjacency list into a nested JSON structure starting from detected roots.
+By leveraging **BFS/DFS algorithms** for component identification and **Recursive JSON construction** for data mapping, the BFHL Visualizer ensures that even the most complex relationships are rendered with 100% accuracy and professional elegance.

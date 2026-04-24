@@ -7,8 +7,11 @@ const COLLEGE_ROLL_NUMBER = 'RA2311003010915';
 
 /**
  * GET /bfhl
- * Health-check / user-info endpoint.
- * Some automated graders send a GET before accepting the POST.
+ * Retrieves the static developer identity and health status.
+ *
+ * @param {import('express').Request} _req - Express request object (unused)
+ * @param {import('express').Response} res - Express response object
+ * @returns {void} Returns JSON with user_id, email_id, and college_roll_number.
  */
 exports.getInfo = (_req, res) => {
     res.status(200).json({
@@ -21,10 +24,12 @@ exports.getInfo = (_req, res) => {
 
 /**
  * POST /bfhl
- * Main processing endpoint.
+ * Primary endpoint for graph relationship processing and hierarchy generation.
  *
- * Body: { data: string[] }
- * Returns hierarchies, invalid entries, duplicate edges, and summary.
+ * @param {import('express').Request} req - Express request object containing data array in body.
+ * @param {import('express').Response} res - Express response object.
+ * @param {import('express').NextFunction} next - Express next function for error handling.
+ * @returns {void} Returns JSON with calculated hierarchies and graph summary.
  */
 exports.processData = (req, res, next) => {
     try {
