@@ -1,9 +1,9 @@
 const { processGraph } = require('../utils/graphUtils');
 
 /** Static user identity — update to real values before submission */
-const USER_ID             = 'your_name_ddmmyyyy';
-const EMAIL_ID            = 'your_email@college.edu';
-const COLLEGE_ROLL_NUMBER = 'ROLL123456';
+const USER_ID             = 'Sameer_26082004';
+const EMAIL_ID            = 'sy3253@srmist.edu.in';
+const COLLEGE_ROLL_NUMBER = 'RA2311003010915';
 
 /**
  * GET /bfhl
