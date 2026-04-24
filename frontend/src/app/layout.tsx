@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "BFHL | Advanced Hierarchy Visualizer",
   description: "A premium full-stack solution for building, validating, and visualizing complex node hierarchies with real-time cycle detection.",
   keywords: ["BFHL", "Hierarchy", "Graph", "Tree", "Visualizer", "React", "Next.js", "Node.js"],
-  authors: [{ name: "BFHL Developer" }],
+  authors: [{ name: "Sameer_26082004" }],
   openGraph: {
     title: "BFHL Hierarchy Visualizer",
     description: "Premium node relationship analysis and visualization tool.",
